@@ -10,6 +10,7 @@ function MultiCounter(){
 
     function updateCounterSize(size){
         setCounterSize(size);   //update size by setter
+        setSum(0);
     }
 
     function increaseSum(){
@@ -20,7 +21,7 @@ function MultiCounter(){
         setSum(sum-1);
     }
 
-    // Pass function and variables down to counterGroup/generators/Countersum
+    // Pass function and variables down to counterGroup/generators/Countersum ()
     return (
         <div>
             <CounterSizeGenerator updateCounterSize={updateCounterSize}></CounterSizeGenerator>
