@@ -10,10 +10,19 @@ function CounterGroup(props){
         setCounterList(counters);
     }, [props.counterSize]);
 
+    function increaseSum(){
+        props.increaseSum();    //receive increase sum from Counter
+    }
+
+    function decreaseSum(){
+        props.decreaseSum();
+    }
+
+    // Pass functions down to Counter (increaseSum and decreaseSum)
     return (
         <div>
             {counterList.map((item, index) => (
-                <Counter key={item+index}></Counter>
+                <Counter key={item+index} increaseSum={increaseSum} decreaseSum={decreaseSum}></Counter>
             ))}
         </div>
     )
