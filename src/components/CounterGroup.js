@@ -1,31 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import {useDispatch, useSelector} from "react-redux"
+import { useEffect } from 'react';
 import Counter from './Counter'
 
-function CounterGroup(props){
-    const [counterList, setCounterList] = useState([]);
+const CounterGroup = (props) => {
+    const dispatch = useDispatch();
+    const size = useSelector(state=>state.size);      //getter of info
+    useEffect(()=>{dispatch({type: 'resetSum'})
+    }, [size, dispatch])
 
-    // Unique id (use date.now as temporary example)
-    useEffect(()=>{
-        const counters = new Array(props.counterSize).fill(Date.now());
-        setCounterList(counters);
-    }, [props.counterSize]);
-
-    function increaseSum(){
-        props.increaseSum();    //receive increase sum from Counter
-    }
-
-    function decreaseSum(){
-        props.decreaseSum();
-    }
-
-    // Pass functions down to Counter (increaseSum and decreaseSum)
-    return (
-        <div>
-            {counterList.map((item, index) => (
-                <Counter key={item+index} increaseSum={increaseSum} decreaseSum={decreaseSum}></Counter>
-            ))}
-        </div>
-    )
+    // Map a unique key on array, _item represent all date values, then combine
+    return new Array(Number(size)).fill(Date.now()).map((_item, index)=>{
+        return <Counter key={_item + index} onSumChange={props.onSumChange}></Counter>;
+    })
 }
 
 export default CounterGroup;

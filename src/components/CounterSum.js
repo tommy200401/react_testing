@@ -1,9 +1,11 @@
-// import {useState} from 'react';
+import {useSelector} from "react-redux"
+import React from "react"
 
-function CounterSum(props){
-    // const [sum, setSum] = useState(0);
+const CounterSum = () => {
+    const sum = useSelector(state=>state.sum)
+
     return (
-        <div> Sum = {props.sum} </div>
+        <div> Sum = {sum} </div>
     )
 }
 

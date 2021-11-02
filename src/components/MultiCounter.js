@@ -1,34 +1,19 @@
 import CounterSizeGenerator from "./CounterSizeGenerator";
 import CounterGroup from "./CounterGroup";
 import CounterSum from "./CounterSum";
-import react, {useState} from "react"
+import React, {useState} from "react"
 import "../styles/MultiCounter.css"
 
 function MultiCounter(){
-    //import countersize from CounterSizeGenerator
-    const [counterSize, setCounterSize] = useState(0);  
+
+    const [size, setSize] = useState(0);  
     const [sum, setSum] = useState(0);    // pass number to CounterSum
 
-    function updateCounterSize(size){
-        setCounterSize(size);   //update size by setter
-        setSum(0);
-    }
-
-    function increaseSum(){
-        setSum(sum+1);      // pass number
-    }
-
-    function decreaseSum(){
-        setSum(sum-1);
-    }
-
-    // Pass function and variables down to counterGroup/generators/Countersum ()
     return (
         <div>
-            <CounterSizeGenerator updateCounterSize={updateCounterSize}></CounterSizeGenerator>
-            <CounterGroup counterSize={counterSize} increaseSum={increaseSum} decreaseSum={decreaseSum}></CounterGroup>
+            <CounterSizeGenerator onGenerate={value=>setSize(value)}></CounterSizeGenerator>
+            <CounterGroup onSumChange={num=>setSum(sum+num)}></CounterGroup>
             <CounterSum sum={sum}></CounterSum>
-
         </div>
     )
 }

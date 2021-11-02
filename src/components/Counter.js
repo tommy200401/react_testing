@@ -1,17 +1,19 @@
 import React, {useState} from "react";
+import { useDispatch } from "react-redux";
 import "../styles/Counter.css"
 
-function Counter(props){
+const Counter = (props) => {
     const [number, setNumber] = useState(0); //default number = 0
+    const dispatch = useDispatch();
 
-    function increase() {
-        setNumber(number+1);
-        props.increaseSum();    //give number to parent component(CounterGroup)
+    const increase = () => {
+        dispatch({type: 'updateCounterSum', payload:1})
+        return setNumber(number+1);
     }
 
-    function decrease() {
-        setNumber(number-1);
-        props.decreaseSum();
+    const decrease = () =>  {
+        dispatch({type: 'updateCounterSum', payload:-1})
+        return setNumber(number-1);
     }
     
     const spanStyle = {

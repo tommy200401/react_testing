@@ -1,29 +1,15 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 function CounterSizeGenerator(props){
     const [size, setSize] = useState(0); //default size: 0
-
-    function handleChangeSize(event){
-// event.target.value => String
-// avoid null-value error
-        if (event.target.value.length === 0){
-            setSize(0)
-        }
-        else{
-            setSize(parseInt(event.target.value))
-        }
-    }
-
-function generateCounter(){
-
-    props.updateCounterSize(size);   //Use variable from upper class (like OOP)
-}
+    const dispatch = useDispatch(); 
 
     return (
         <div>
             <span>Size:</span>
-            <input min="0" type="number" value={size} onChange={handleChangeSize}></input>
-            <button onClick={generateCounter}>Generate</button>
+            <input min="0" type="number" onChange={event=>setSize(event.target.value)} defaultValue = {size}></input>
+            <button onClick={()=>dispatch({type:'updateCounterSize', payload: size})}>Generate</button>
         </div>
     )
 }
