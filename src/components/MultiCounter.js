@@ -2,6 +2,7 @@ import CounterSizeGenerator from "./CounterSizeGenerator";
 import CounterGroup from "./CounterGroup";
 import CounterSum from "./CounterSum";
 import {useState} from "react"
+import "../styles/MultiCounter.css"
 
 function MultiCounter(){
     //import countersize from CounterSizeGenerator

@@ -14,10 +14,17 @@ function Counter(props){
         props.decreaseSum();
     }
     
+    const spanStyle = {
+        margin: '40px',
+        border: '5px solid pink',
+        fontSize: '60px'
+      };
+
+
     return (
-        <div className="counter">
+        <div className="Counter">
             <button onClick={increase}>+</button>
-            <span>{number}</span>
+            <span style={spanStyle}>{number}</span>
             <button onClick={decrease}>-</button>
         </div>
     )
