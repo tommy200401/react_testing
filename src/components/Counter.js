@@ -20,7 +20,6 @@ function Counter(props){
         fontSize: '60px'
       };
 
-
     return (
         <div className="Counter">
             <button onClick={increase}>+</button>
