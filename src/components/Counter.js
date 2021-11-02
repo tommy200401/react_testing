@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useDispatch } from "react-redux";
 import "../styles/Counter.css"
 
-const Counter = (props) => {
+const Counter = () => {
     const [number, setNumber] = useState(0); //default number = 0
     const dispatch = useDispatch();
 

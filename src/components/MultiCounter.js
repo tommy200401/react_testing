@@ -11,9 +11,9 @@ function MultiCounter(){
 
     return (
         <div>
-            <CounterSizeGenerator onGenerate={value=>setSize(value)}></CounterSizeGenerator>
-            <CounterGroup onSumChange={num=>setSum(sum+num)}></CounterGroup>
-            <CounterSum sum={sum}></CounterSum>
+            <CounterSizeGenerator></CounterSizeGenerator>
+            <CounterGroup></CounterGroup>
+            <CounterSum></CounterSum>
         </div>
     )
 }
